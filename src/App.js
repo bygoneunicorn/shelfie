@@ -10,7 +10,8 @@ class App extends Component {
     super()
 
     this.state = {
-        inventory : []
+        inventory : [],
+        selectedProduct: {}
     }
     
   }
@@ -25,8 +26,10 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
-        <Dashboard inventory={this.state.inventory}/>
-        <Form updateList={this.componentDidMount}/>
+        <main className="main-body">
+          <Dashboard inventory={this.state.inventory}/>
+          <Form updateList={this.componentDidMount} selectedProduct={this.state.selectedProduct}/>
+        </main>
       </div>
     );
   }

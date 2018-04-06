@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import './Form.css'
 
 export default class Form extends Component{
     constructor(){
@@ -38,6 +39,7 @@ export default class Form extends Component{
         axios.post('http://localhost:4000/api/product', {name, price, image_url}).then(res =>{
             this.handleCancel();
         })
+        this.props.updateList()
     }
     handleCancel(){
         this.setState({
@@ -48,7 +50,7 @@ export default class Form extends Component{
     }
     render(){
         return(
-            <div>
+            <div className="form">
                 <p>Image URL:</p>
                 <input value={this.state.image_url} onChange={e => this.handleImageUrl(e.target.value)}/>
                 <p>Product Name:</p>
