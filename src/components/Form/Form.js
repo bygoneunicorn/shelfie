@@ -39,7 +39,6 @@ export default class Form extends Component{
         axios.post('http://localhost:4000/api/product', {name, price, image_url}).then(res =>{
             this.handleCancel();
         })
-        this.props.updateList()
     }
     handleCancel(){
         this.setState({
