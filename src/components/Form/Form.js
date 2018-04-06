@@ -1,12 +1,13 @@
 import React, {Component} from 'react';
+import axios from 'axios';
 
 export default class Form extends Component{
     constructor(){
         super()
         this.state = {
-            imageUrlIn: '',
-            productIn: '',
-            priceIn: ''
+            image_url: '',
+            name: '',
+            price: ''
         }
         this.handleImageUrl = this.handleImageUrl.bind( this );
         this.handleProduct = this.handleProduct.bind( this );
@@ -16,40 +17,44 @@ export default class Form extends Component{
     }
     handleImageUrl(val){
         this.setState({
-            imageUrlIn: val
+            image_url: val
         })
-        console.log(this.state.imageUrlIn)
     }
     handleProduct(val){
         this.setState({
-            productIn: val
+            name: val
         })
     }
     handlePrice(val){
         this.setState({
-            priceIn: val
+            price: val
         })
     }
     handleAdd(){
-
-        // this.props.updateList();
+        const {name, price, image_url} = this.state
+        console.log(name)
+        console.log(price)
+        console.log(image_url)
+        axios.post('http://localhost:4000/api/product', {name, price, image_url}).then(res =>{
+            this.handleCancel();
+        })
     }
     handleCancel(){
         this.setState({
-            imageUrlIn: '',
-            productIn: '',
-            priceIn: ''
+            image_url: '',
+            name: '',
+            price: ''
         })
     }
     render(){
         return(
             <div>
                 <p>Image URL:</p>
-                <input value={this.state.imageUrlIn} onChange={e => this.handleImageUrl(e.target.value)}/>
+                <input value={this.state.image_url} onChange={e => this.handleImageUrl(e.target.value)}/>
                 <p>Product Name:</p>
-                <input value={this.state.productIn} onChange={e => this.handleProduct(e.target.value)} />
+                <input value={this.state.name} onChange={e => this.handleProduct(e.target.value)} />
                 <p>Price:</p>
-                <input value={this.state.priceIn}  onChange={e => this.handlePrice(e.target.value)} /><br />
+                <input value={this.state.price}  onChange={e => this.handlePrice(e.target.value)} /><br />
                 <button onClick={this.handleAdd}>Add to Inventory</button>
                 <button onClick={this.handleCancel}>Cancel</button>
             </div>

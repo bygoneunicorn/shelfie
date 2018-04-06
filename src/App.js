@@ -16,10 +16,8 @@ class App extends Component {
   }
   componentDidMount(){
     axios.get('http://localhost:4000/api/inventory').then(res =>{
-      console.log(res.data)
-      var updatedInv = res.data
       this.setState({
-        inventory: updatedInv
+        inventory: res.data
       })
     })
   }

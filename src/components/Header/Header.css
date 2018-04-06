@@ -1,0 +1,15 @@
+.header{
+    width: 100vw;
+    height: 100px;
+    background: #ab2a19;
+    text-align: left;
+    padding-left: 50px;
+    display: flex;
+    align-items: center;
+}
+.logo{
+    margin: 16px 0;
+}
+.shelfie-text{
+    padding-left: 50px;
+}

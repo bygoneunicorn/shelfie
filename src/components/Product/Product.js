@@ -6,7 +6,7 @@ export default function Product(props){
             {console.log(props)}
            <h3>{props.inventory.name}</h3>
            <p>{props.inventory.price}</p>
-            <img src={props.inventory.imageUrl} alt='Product'/>
+            <img src={props.inventory.image_url} alt='Product'/>
         </div>
     )
 }
