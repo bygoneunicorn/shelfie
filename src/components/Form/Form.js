@@ -32,6 +32,7 @@ export default class Form extends Component{
     }
     handleAdd(){
 
+        // this.props.updateList();
     }
     handleCancel(){
         this.setState({
@@ -49,7 +50,7 @@ export default class Form extends Component{
                 <input value={this.state.productIn} onChange={e => this.handleProduct(e.target.value)} />
                 <p>Price:</p>
                 <input value={this.state.priceIn}  onChange={e => this.handlePrice(e.target.value)} /><br />
-                <button>Add to Inventory</button>
+                <button onClick={this.handleAdd}>Add to Inventory</button>
                 <button onClick={this.handleCancel}>Cancel</button>
             </div>
         )

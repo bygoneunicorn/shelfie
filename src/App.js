@@ -12,12 +12,14 @@ class App extends Component {
     this.state = {
         inventory : []
     }
+    
   }
   componentDidMount(){
     axios.get('http://localhost:4000/api/inventory').then(res =>{
       console.log(res.data)
+      var updatedInv = res.data
       this.setState({
-        inventory: res.data
+        inventory: updatedInv
       })
     })
   }
@@ -26,7 +28,7 @@ class App extends Component {
       <div className="App">
         <Header />
         <Dashboard inventory={this.state.inventory}/>
-        <Form />
+        <Form updateList={this.componentDidMount}/>
       </div>
     );
   }
